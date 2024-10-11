@@ -1,0 +1,28 @@
+import streamlit as st
+import random
+
+def choose_lunch_menu():
+    # 음식 카테고리
+    food_categories = {
+        '한식': ['불백', '부대찌개', '김치찜', '칼국수', '분식', '국밥'],
+        '아시안': ['중식', '쌀국수', '마라탕', '아메리칸차이니즈'],
+        '양식': ['피자', '파스타', '샐러드', '햄버거'],
+        '일식': ['초밥', '라멘', '돈부리', '우동', '카레'],
+        '패스트푸드': ['치킨', '햄버거', '핫도그', '피자', '샌드위치', '파스타'],
+        '기타': ['샐러드', '스프', '찜', '덮밥', '샌드위치', '퀘사디아']
+    }
+
+    # 랜덤으로 음식 카테고리 선택
+    category = random.choice(list(food_categories.keys()))
+
+    # 선택된 음식 카테고리에서 랜덤으로 음식 선택
+    menu = random.choice(food_categories[category])
+
+    return f"오늘의 점심은 '{category}' 중에서 '{menu}' 어떠세요?"
+
+# Streamlit 앱 레이아웃
+st.title('점심 메뉴 추천기')
+
+if st.button('메뉴 추천받기'):
+    recommended_menu = choose_lunch_menu()
+    st.write(recommended_menu)
